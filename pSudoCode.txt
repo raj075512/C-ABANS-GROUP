@@ -1,0 +1,45 @@
+define PACKET_SIZE 17
+define ip as "127.0.0.1"
+define port as 3000
+
+function parse_packet(buffer)
+    set symbol to first 4 bytes of buffer
+    set buy_sell_indicator to 5th byte of buffer
+    set quantity to bytes 6-9, convert to host byte order
+    set price to bytes 10-13, convert to host byte order
+    set packet_sequence to bytes 14-17, convert to host byte order
+    display parsed packet details
+
+function main
+    create socket
+    if socket creation fails, exit
+    setup address struct with IP and port
+    connect to server
+    if connection fails, exit
+
+    loop
+        request_type = get user input
+        if request_type is 1
+            send value 1 to server
+            loop while receiving packets
+                if full packet received
+                    call parse_packet with received buffer
+                else
+                    display incomplete packet message
+            break loop after receiving all packets
+
+        else if request_type is 2
+            resendSeq = get user input
+            create payload with value 2 and resendSeq
+            send payload to server
+            receive and parse packet
+            break loop after resending packet
+
+        else
+            display invalid request message
+        sleep for 2 seconds
+
+    close socket
+    display disconnection message
+
+call main
