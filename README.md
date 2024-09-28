@@ -1,4 +1,4 @@
-![Screenshot from 2024-09-28 19-23-25](https://github.com/user-attachments/assets/c5a7bbb0-6871-46dd-99c9-40fe7a9d9eb5)![Screenshot from 2024-09-28 19-23-25](https://github.com/user-attachments/assets/15f1b1ac-2945-4e05-b51d-88416e80a5b6)# C-ABANS-GROUP
+
 c++  assignment for server client communication for fetching the stocks data via ticker 
 
 **RUN**
